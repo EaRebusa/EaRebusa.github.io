@@ -1,0 +1,65 @@
+---
+const tools = [
+  { name: 'Rust', label: 'Systems & Memory Safety' },
+  { name: 'Linux / WSL', label: 'POSIX & Kernel Interfaces' },
+  { name: 'Windows / Win32', label: 'IOCTL & Storage Forensics' },
+  { name: 'Docker', label: 'Containerization & Subnets' },
+  { name: 'Tailscale', label: 'WireGuard Mesh Networking' },
+  { name: 'Python', label: 'FastAPI & Telemetry Workers' },
+  { name: 'TypeScript', label: 'Type-Safe Extensions & Web' },
+  { name: 'WebStorm', label: 'JetBrains Dev Ecosystem' },
+  { name: 'Git', label: 'Audited Version Control' },
+  { name: 'Kotlin', label: 'Android & BLE Dispatch' },
+  { name: 'C / C++', label: 'Hardware Abstractions' },
+  { name: 'FastAPI', label: 'Async Service Lifecycles' },
+];
+
+// Duplicate items for seamless loop
+const tickerItems = [...tools, ...tools];
+---
+
+<div class="w-full border-b border-border bg-[#090a0f]/60 py-4 overflow-hidden relative select-none">
+  <!-- Fade Edge Gradients -->
+  <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10 bg-gradient-to-r from-canvas to-transparent pointer-events-none"></div>
+  <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10 bg-gradient-to-l from-canvas to-transparent pointer-events-none"></div>
+
+  <div class="ticker-wrapper flex items-center">
+    <div class="ticker-track flex items-center gap-4 sm:gap-6">
+      {tickerItems.map((item) => (
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface/60 border border-border/80 text-xs font-mono text-[#9ca3af] hover:text-cyan-status hover:border-cyan-status/40 transition-colors whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-status/60"></span>
+          <span class="font-semibold text-white">{item.name}</span>
+          <span class="text-[#6b7280] hidden sm:inline">&bull;</span>
+          <span class="text-[#6b7280] text-[11px] hidden sm:inline">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .ticker-track {
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+      overflow-x: auto;
+    }
+  }
+</style>

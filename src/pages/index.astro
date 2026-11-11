@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import TechTicker from '../components/TechTicker.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import SkillsSection from '../components/SkillsSection.astro';
@@ -21,6 +22,7 @@ const secondaryProjects = sortedProjects.filter((p) => p.data.role === 'Secondar
   
   <main>
     <Hero />
+    <TechTicker />
 
     <!-- Projects Section -->
     <section id="projects" class="py-16 sm:py-20 border-b border-border">
