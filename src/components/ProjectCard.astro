@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import { Github, ExternalLink, Award } from 'lucide-astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, tagline, category, techStack, metricsOrStatus, repoUrl, artifactUrl } = project.data;
+---
+
+<article class="p-6 sm:p-7 rounded-xl bg-surface border border-border hover:border-border-active transition-all flex flex-col justify-between group">
+  <div class="space-y-4">
+    <!-- Header meta: Category & Status Badge -->
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-medium bg-canvas border border-border text-cyan-status">
+        {category}
+      </span>
+      {metricsOrStatus && (
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+          <Award class="w-3.5 h-3.5" />
+          {metricsOrStatus}
+        </span>
+      )}
+    </div>
+
+    <!-- Title & Tagline -->
+    <div>
+      <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-action transition-colors">
+        {title}
+      </h3>
+      <p class="mt-1.5 text-sm text-[#9ca3af] leading-relaxed">
+        {tagline}
+      </p>
+    </div>
+
+    <!-- Key Takeaways / Body Content -->
+    <div class="prose prose-invert prose-sm max-w-none text-[#9ca3af] leading-relaxed border-t border-border/60 pt-4">
+      <Content />
+    </div>
+  </div>
+
+  <!-- Footer: Tech Stack & Links -->
+  <div class="pt-6 space-y-4 border-t border-border/60 mt-6">
+    <div class="flex flex-wrap gap-1.5">
+      {techStack.map((tech) => (
+        <span class="px-2 py-0.5 rounded bg-canvas border border-border/80 text-[11px] font-mono text-[#9ca3af]">
+          {tech}
+        </span>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-3 pt-1">
+      <a
+        href={repoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-canvas hover:bg-surface-hover border border-border hover:border-border-active text-xs font-mono text-white transition-all"
+      >
+        <Github class="w-3.5 h-3.5 text-cyan-status" />
+        Repository
+      </a>
+      {artifactUrl && (
+        <a
+          href={artifactUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-canvas hover:bg-surface-hover border border-border hover:border-border-active text-xs font-mono text-white transition-all"
+        >
+          <ExternalLink class="w-3.5 h-3.5 text-blue-action" />
+          Release Artifact
+        </a>
+      )}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,139 @@
+---
+import { Send, Mail, Github, MapPin, CheckCircle } from 'lucide-astro';
+
+const ACCESS_KEY = "7b5304f9-cecf-4667-9430-f2e0d15b4689";
+---
+
+<section id="contact" class="py-16 sm:py-20 border-b border-border">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <div>
+      <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-status">Direct Inquiries</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1">Get in Touch</h3>
+      <p class="text-sm text-[#9ca3af] mt-2 max-w-2xl">
+        Currently available for IT Officer, Systems Engineering, and Technical Infrastructure positions. Send a direct transmission below or connect via GitHub.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+      <!-- Contact Form (3 cols) -->
+      <div class="lg:col-span-3 p-6 sm:p-8 rounded-xl bg-surface border border-border">
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="space-y-4"
+        >
+          <input type="hidden" name="access_key" value={ACCESS_KEY} />
+          <input type="hidden" name="from_name" value="Portfolio Contact Transmission" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="name" class="block text-xs font-mono text-[#9ca3af]">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Jane Doe"
+                class="w-full px-3.5 py-2.5 rounded-md bg-canvas border border-border text-sm text-white placeholder-[#6b7280] focus:outline-none focus:border-cyan-status transition-colors"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label for="email" class="block text-xs font-mono text-[#9ca3af]">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="jane@example.com"
+                class="w-full px-3.5 py-2.5 rounded-md bg-canvas border border-border text-sm text-white placeholder-[#6b7280] focus:outline-none focus:border-cyan-status transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="subject" class="block text-xs font-mono text-[#9ca3af]">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="Inquiry: Systems Engineering Opportunity"
+              class="w-full px-3.5 py-2.5 rounded-md bg-canvas border border-border text-sm text-white placeholder-[#6b7280] focus:outline-none focus:border-cyan-status transition-colors"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="message" class="block text-xs font-mono text-[#9ca3af]">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              placeholder="Detail your requirements, project scope, or opportunity..."
+              class="w-full px-3.5 py-2.5 rounded-md bg-canvas border border-border text-sm text-white placeholder-[#6b7280] focus:outline-none focus:border-cyan-status transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-blue-action text-canvas font-semibold font-mono text-sm hover:bg-blue-400 transition-all cursor-pointer shadow-sm"
+          >
+            <Send class="w-4 h-4" />
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Fallback and Direct Info (2 cols) -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="p-6 rounded-xl bg-surface border border-border space-y-4">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-cyan-status">Direct Contact</h4>
+          
+          <div class="space-y-3 text-sm text-[#9ca3af]">
+            <div class="flex items-start gap-3">
+              <Mail class="w-4 h-4 text-cyan-status mt-1 shrink-0" />
+              <div>
+                <div class="text-xs font-mono text-[#6b7280]">Response Horizon</div>
+                <div class="text-white font-medium">Within 24 Hours</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <Github class="w-4 h-4 text-cyan-status mt-1 shrink-0" />
+              <div>
+                <div class="text-xs font-mono text-[#6b7280]">GitHub Profile</div>
+                <a
+                  href="https://github.com/EaRebusa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white font-mono hover:text-cyan-status hover:underline"
+                >
+                  github.com/EaRebusa
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <MapPin class="w-4 h-4 text-cyan-status mt-1 shrink-0" />
+              <div>
+                <div class="text-xs font-mono text-[#6b7280]">Location</div>
+                <div class="text-white">Philippines • Open to Remote & Relocation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-surface/50 border border-border space-y-2">
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-400">
+            <CheckCircle class="w-4 h-4" />
+            <span>Zero-Backend Transmission</span>
+          </div>
+          <p class="text-xs text-[#9ca3af] leading-relaxed">
+            Form queries are dispatched directly via secure Web3Forms API endpoint, preserving static performance without server overhead.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

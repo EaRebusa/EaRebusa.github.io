@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
+
+const featuredProjects = sortedProjects.filter((p) => p.data.role === 'Featured');
+const secondaryProjects = sortedProjects.filter((p) => p.data.role === 'Secondary');
+---
+
+<Layout>
+  <Header />
+  
+  <main>
+    <Hero />
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 sm:py-20 border-b border-border">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="space-y-2">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-status">System Implementations</h2>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white">Engineered Projects & Case Studies</h3>
+          <p class="text-sm text-[#9ca3af] max-w-2xl">
+            Selected systems utilities, security tooling, and infrastructure automation software architected with safety and performance bounds.
+          </p>
+        </div>
+
+        <!-- Featured Projects List -->
+        <div class="grid grid-cols-1 gap-8">
+          {featuredProjects.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+
+        <!-- Secondary Projects / CLI & Utilities -->
+        {secondaryProjects.length > 0 && (
+          <div class="pt-6 border-t border-border">
+            <ProjectGrid projects={secondaryProjects} />
+          </div>
+        )}
+      </div>
+    </section>
+
+    <SkillsSection />
+    <ContactForm />
+  </main>
+
+  <Footer />
+</Layout>

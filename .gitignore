@@ -1,0 +1,21 @@
+# Build and cache
+dist/
+.astro/
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & Editor
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+
+# Project context & LLM prompt files (Excluded from repository)
+GEMINI.md
+*SPEC*.md

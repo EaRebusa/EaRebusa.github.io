@@ -1,0 +1,63 @@
+---
+import { ArrowDown, Mail, FileDown, ShieldCheck, Cpu } from 'lucide-astro';
+---
+
+<section class="py-16 sm:py-24 border-b border-border">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-6">
+      <!-- Tag / Status Pill -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface border border-border text-xs font-mono text-cyan-status">
+        <Cpu class="w-4 h-4 text-cyan-status" />
+        <span>Hardware Telemetry • Forensics • Infrastructure Reliability</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        IT Systems & Software Engineer specializing in low-level utilities, automation, and infrastructure reliability.
+      </h1>
+
+      <!-- Sub-narrative -->
+      <p class="text-base sm:text-lg text-[#9ca3af] max-w-3xl leading-relaxed">
+        I build robust, secure software tools—from raw Windows storage forensics in Rust to offline-first cryptographic extensions and automated IT fleet diagnostics. Experienced in orchestrating autonomous AI agent workflows to deliver verified production code.
+      </p>
+
+      <!-- Autonomous Agent Orchestration Highlight -->
+      <div class="p-4 rounded-lg bg-surface/80 border border-border flex items-start gap-3 max-w-3xl">
+        <ShieldCheck class="w-5 h-5 text-cyan-status shrink-0 mt-0.5" />
+        <div class="text-xs sm:text-sm text-[#9ca3af]">
+          <span class="font-mono text-white font-semibold">Autonomous Agent Orchestration & Spec-Driven Engineering:</span>
+          Practicing rigorous human-in-the-loop verification—auditing direct Win32 memory alignments, cryptographically isolated shadow DOM trees, and asynchronous background worker lifecycles.
+        </div>
+      </div>
+
+      <!-- Action CTAs -->
+      <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-sm">
+        <a
+          href="#projects"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-blue-action text-canvas font-semibold hover:bg-blue-400/90 transition-all shadow-sm"
+        >
+          View Projects
+          <ArrowDown class="w-4 h-4" />
+        </a>
+
+        <a
+          href="#contact"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-surface text-white border border-border hover:bg-surface-hover hover:border-border-active transition-all"
+        >
+          <Mail class="w-4 h-4 text-cyan-status" />
+          Get in Touch
+        </a>
+
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-transparent text-[#9ca3af] hover:text-white border border-border/60 hover:border-border transition-all"
+        >
+          <FileDown class="w-4 h-4" />
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

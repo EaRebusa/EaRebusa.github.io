@@ -1,0 +1,28 @@
+---
+import { Github, Terminal } from 'lucide-astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-10 border-t border-border bg-[#090a0f]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#6b7280]">
+    <div class="flex items-center gap-2">
+      <Terminal class="w-4 h-4 text-cyan-status" />
+      <span>&copy; {currentYear} Earl John Rebusa. Static SSG via Astro.</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span>Zero-telemetry build</span>
+      <span class="text-border">&bull;</span>
+      <a
+        href="https://github.com/EaRebusa/EaRebusa.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 hover:text-white transition-colors"
+      >
+        <Github class="w-3.5 h-3.5" />
+        Source Code
+      </a>
+    </div>
+  </div>
+</footer>

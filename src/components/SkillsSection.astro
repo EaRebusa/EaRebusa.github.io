@@ -1,0 +1,85 @@
+---
+import { Cpu, Server, Workflow, Globe } from 'lucide-astro';
+
+const skillCategories = [
+  {
+    title: 'Systems & Core',
+    icon: Cpu,
+    skills: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'C/C++', 'Shell / PowerShell'],
+  },
+  {
+    title: 'IT & Infrastructure',
+    icon: Server,
+    skills: [
+      'Windows Internals (Win32, IOCTL)',
+      'Storage Forensics & Raw I/O',
+      'Docker & Containerization',
+      'Tailscale Mesh Networking',
+      'Local DNS / Self-Hosted Engines',
+      'LAN Subnetting & Network Config',
+    ],
+  },
+  {
+    title: 'Engineering Workflows & Agentic AI',
+    icon: Workflow,
+    skills: [
+      'Autonomous Agent Orchestration (Windsurf, Claude Code, Cursor)',
+      'Specification-Driven Development (spec.md)',
+      'Code Auditing & Boundary Verification',
+      'Git Version Control & CI/CD',
+      'JetBrains WebStorm & Tooling',
+      'Linux / WSL Environments',
+      'Cargo, Gradle & Vite Build Systems',
+    ],
+  },
+  {
+    title: 'Web, APIs & Data',
+    icon: Globe,
+    skills: [
+      'FastAPI & Asynchronous Workers',
+      'Node.js & Express',
+      'React & Modern Frontends',
+      'Astro (Static Generation)',
+      'SQLAlchemy & Relational Models',
+      'SQLite / PostgreSQL',
+      'REST APIs & Architecture',
+    ],
+  },
+];
+---
+
+<section id="skills" class="py-16 sm:py-20 border-b border-border">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div>
+      <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-status">Competency Matrix</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1">Systems, IT & Engineering Skills</h3>
+      <p class="text-sm text-[#9ca3af] mt-2 max-w-2xl">
+        Proven capabilities spanning low-level operating system APIs, IT fleet infrastructure, full-stack applications, and agentic development workflows.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {skillCategories.map((cat) => {
+        const IconComponent = cat.icon;
+        return (
+          <div class="p-6 rounded-xl bg-surface border border-border flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2.5 pb-3 border-b border-border">
+                <IconComponent class="w-5 h-5 text-cyan-status" />
+                <h4 class="font-bold text-white text-base">{cat.title}</h4>
+              </div>
+              <ul class="mt-4 space-y-2">
+                {cat.skills.map((skill) => (
+                  <li class="flex items-start gap-2 text-xs sm:text-sm text-[#9ca3af]">
+                    <span class="text-cyan-status font-mono mt-0.5">&bull;</span>
+                    <span>{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

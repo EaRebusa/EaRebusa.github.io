@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import { Github, Terminal } from 'lucide-astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="space-y-4">
+  <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#6b7280]">
+    <Terminal class="w-4 h-4 text-cyan-status" />
+    <span>Utilities & Automation Tools</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {projects.map(async (project) => {
+      const { Content } = await render(project);
+      const { title, tagline, category, techStack, metricsOrStatus, repoUrl } = project.data;
+      return (
+        <article class="p-5 rounded-lg bg-surface border border-border hover:border-border-active transition-all flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-canvas border border-border text-cyan-status">
+                {category}
+              </span>
+              {metricsOrStatus && (
+                <span class="text-[11px] font-mono text-emerald-400">
+                  {metricsOrStatus}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <h4 class="text-base font-bold text-white">
+                {title}
+              </h4>
+              <p class="mt-1 text-xs text-[#9ca3af] leading-relaxed">
+                {tagline}
+              </p>
+            </div>
+
+            <div class="prose prose-invert prose-xs text-[#9ca3af] border-t border-border/50 pt-3 text-xs">
+              <Content />
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-border/50 space-y-3">
+            <div class="flex flex-wrap gap-1">
+              {techStack.map((tech) => (
+                <span class="px-1.5 py-0.5 rounded bg-canvas text-[10px] font-mono text-[#9ca3af]">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href={repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-status hover:underline"
+            >
+              <Github class="w-3.5 h-3.5" />
+              View Source Code &rarr;
+            </a>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</div>
