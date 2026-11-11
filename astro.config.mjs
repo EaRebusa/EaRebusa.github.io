@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://earebusa.github.io',
+  site: 'https://EaRebusa.github.io',
   integrations: [tailwind()],
 });
